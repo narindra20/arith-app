@@ -126,3 +126,11 @@ dependencies {
 springBoot {
     mainClass = 'school.hei.demo.PojaApplication'
 }
+
+bootJar {
+    mainClass = 'school.hei.demo.PojaApplication'
+}
+
+tasks.named('resolveMainClassName') {
+    enabled = false
+}
