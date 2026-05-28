@@ -134,3 +134,7 @@ bootJar {
 tasks.named('resolveMainClassName') {
     enabled = false
 }
+
+bootRun {
+    mainClass = 'school.hei.demo.PojaApplication'
+}
