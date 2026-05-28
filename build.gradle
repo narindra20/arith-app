@@ -27,6 +27,9 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    all {
+        exclude group: 'com.example', module: 'demo'
+    }
 }
 
 test {
@@ -129,12 +132,25 @@ springBoot {
 
 bootJar {
     mainClass = 'school.hei.demo.PojaApplication'
+    manifest {
+        attributes 'Start-Class': 'school.hei.demo.PojaApplication'
+    }
+}
+
+bootRun {
+    mainClass = 'school.hei.demo.PojaApplication'
 }
 
 tasks.named('resolveMainClassName') {
     enabled = false
 }
 
-bootRun {
-    mainClass = 'school.hei.demo.PojaApplication'
+compileJava {
+    exclude '**/com/example/demo/**'
+}
+
+gradle.taskGraph.whenReady { graph ->
+    graph.allTasks.findAll { it.name == 'resolveMainClassName' }.each {
+        it.enabled = false
+    }
 }
