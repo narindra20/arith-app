@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import school.hei.demo.service.ArithService;
 
-// Mockito: ???
 class ArithServiceTest {
   private final ArithService arithService = new ArithService();
 
