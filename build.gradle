@@ -34,9 +34,6 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
-    all {
-        exclude group: 'com.example', module: 'demo'
-    }
 }
 
 
@@ -149,25 +146,5 @@ dependencies {
     testImplementation 'org.junit-pioneer:junit-pioneer:2.2.0'
 
 
-bootJar {
-    mainClass = 'school.hei.demo.PojaApplication'
-    manifest {
-        attributes 'Start-Class': 'school.hei.demo.PojaApplication'
-    }
-}
 
-bootRun {
-    mainClass = 'school.hei.demo.PojaApplication'
-}
-
-}
-
-compileJava {
-    exclude '**/com/example/demo/**'
-}
-
-gradle.taskGraph.whenReady { graph ->
-    graph.allTasks.findAll { it.name == 'resolveMainClassName' }.each {
-        it.enabled = false
-    }
 }
